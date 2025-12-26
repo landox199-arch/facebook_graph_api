@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Facebook Graph API Explorer">
+    <title>Facebook Graph API Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="fbgraph-container">
+        <header class="fbgraph-header">
+            <div class="fbgraph-header-content">
+                <h1 class="fbgraph-title">Facebook Graph API Explorer</h1>
+                <label class="fbgraph-theme-toggle">
+                    <input type="checkbox" id="theme-toggle" class="fbgraph-toggle-input">
+                    <span class="fbgraph-toggle-slider"></span>
+                </label>
+            </div>
+        </header>
+
+        <main class="fbgraph-main">
+            <section class="fbgraph-auth-section">
+                <div class="fbgraph-card">
+                    <h2 class="fbgraph-section-title">Authentication</h2>
+                    <div class="fbgraph-form-group">
+                        <label for="access-token-input" class="fbgraph-label">Access Token</label>
+                        <input type="text" id="access-token-input" class="fbgraph-input" placeholder="Enter your Facebook Access Token">
+                        <p class="fbgraph-hint">Get access token from Facebook Graph API Explorer.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fbgraph-user-section">
+                <div class="fbgraph-card">
+                    <h2 class="fbgraph-section-title">User Information</h2>
+                    <div class="fbgraph-button-group">
+                        <button id="get-profile-btn" class="fbgraph-btn fbgraph-btn-secondary">Get My Profile</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fbgraph-results-section">
+                <div id="loading-indicator" class="fbgraph-loading" style="display: none;">
+                    <div class="fbgraph-spinner"></div>
+                    <p class="fbgraph-loading-text">Loading...</p>
+                </div>
+
+                <div id="error-message" class="fbgraph-error" style="display: none;"></div>
+
+                <div id="results-container" class="fbgraph-results"></div>
+            </section>
+        </main>
+
+        <footer class="fbgraph-footer">
+            <p class="fbgraph-footer-text">API : Facebook Graph API | Authentication used : OAuth 2.0</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

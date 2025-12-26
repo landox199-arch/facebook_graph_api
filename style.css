@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #000000;
+    --bg-card: rgba(255, 255, 255, 0.1);
+    --bg-card-hover: rgba(255, 255, 255, 0.15);
+    --bg-input: rgba(255, 255, 255, 0.1);
+    --bg-input-hover: rgba(255, 255, 255, 0.15);
+    --bg-input-focus: rgba(255, 255, 255, 0.2);
+    --bg-btn-primary: rgba(255, 255, 255, 0.2);
+    --bg-btn-primary-hover: rgba(255, 255, 255, 0.3);
+    --bg-btn-secondary: rgba(255, 255, 255, 0.15);
+    --bg-btn-secondary-hover: rgba(255, 255, 255, 0.25);
+    --bg-error: rgba(255, 255, 255, 0.1);
+    --bg-error-hover: rgba(255, 255, 255, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.9);
+    --text-hint: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-color-hover: rgba(255, 255, 255, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode {
+    --bg-primary: #f5f5f5;
+    --bg-card: rgba(0, 0, 0, 0.05);
+    --bg-card-hover: rgba(0, 0, 0, 0.08);
+    --bg-input: rgba(0, 0, 0, 0.05);
+    --bg-input-hover: rgba(0, 0, 0, 0.08);
+    --bg-input-focus: rgba(0, 0, 0, 0.1);
+    --bg-btn-primary: rgba(0, 0, 0, 0.1);
+    --bg-btn-primary-hover: rgba(0, 0, 0, 0.15);
+    --bg-btn-secondary: rgba(0, 0, 0, 0.08);
+    --bg-btn-secondary-hover: rgba(0, 0, 0, 0.12);
+    --bg-error: rgba(0, 0, 0, 0.05);
+    --bg-error-hover: rgba(0, 0, 0, 0.08);
+    --text-primary: #000000;
+    --text-secondary: rgba(0, 0, 0, 0.8);
+    --text-hint: rgba(0, 0, 0, 0.6);
+    --border-color: rgba(0, 0, 0, 0.2);
+    --border-color-hover: rgba(0, 0, 0, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.fbgraph-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+.fbgraph-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.fbgraph-header {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.fbgraph-header:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-color-hover);
+    box-shadow: 0 12px 40px var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.fbgraph-theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.fbgraph-toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.fbgraph-toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-btn-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.fbgraph-toggle-slider::before {
+    position: absolute;
+    content: '';
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--text-primary);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.fbgraph-toggle-input:checked + .fbgraph-toggle-slider {
+    background-color: var(--bg-btn-primary);
+    border-color: var(--border-color-hover);
+}
+
+.fbgraph-toggle-input:checked + .fbgraph-toggle-slider::before {
+    transform: translateX(30px);
+}
+
+.fbgraph-theme-toggle:hover .fbgraph-toggle-slider {
+    background-color: var(--bg-btn-secondary-hover);
+    border-color: var(--border-color-hover);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.fbgraph-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+body:not(.light-mode) .fbgraph-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.fbgraph-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.fbgraph-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.fbgraph-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-color-hover);
+    box-shadow: 0 12px 40px var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.fbgraph-section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.fbgraph-form-group {
+    margin-bottom: 20px;
+}
+
+.fbgraph-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.fbgraph-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    background: var(--bg-input);
+    color: var(--text-primary);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.fbgraph-input::placeholder {
+    color: var(--text-hint);
+}
+
+.fbgraph-input:hover {
+    background: var(--bg-input-hover);
+    border-color: var(--border-color-hover);
+}
+
+.fbgraph-input:focus {
+    outline: none;
+    border-color: var(--border-color-hover);
+    background: var(--bg-input-focus);
+    box-shadow: 0 0 0 3px var(--shadow-color);
+}
+
+.fbgraph-hint {
+    font-size: 12px;
+    color: var(--text-hint);
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.fbgraph-form-group:hover .fbgraph-hint {
+    color: var(--text-secondary);
+}
+
+.fbgraph-button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.fbgraph-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 150px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fbgraph-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.fbgraph-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.15);
+}
+
+.fbgraph-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.fbgraph-btn-primary {
+    background: var(--bg-btn-primary);
+    color: var(--text-primary);
+}
+
+.fbgraph-btn-primary:hover {
+    background: var(--bg-btn-primary-hover);
+    border-color: var(--border-color-hover);
+}
+
+.fbgraph-btn-secondary {
+    background: var(--bg-btn-secondary);
+    color: var(--text-primary);
+}
+
+.fbgraph-btn-secondary:hover {
+    background: var(--bg-btn-secondary-hover);
+    border-color: var(--border-color-hover);
+}
+
+.fbgraph-results-section {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    min-height: 200px;
+    transition: all 0.3s ease;
+}
+
+.fbgraph-results-section:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-color-hover);
+}
+
+.fbgraph-loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.fbgraph-spinner {
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--text-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fbgraph-loading-text {
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.fbgraph-error {
+    background: var(--bg-error);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--border-color-hover);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.fbgraph-error:hover {
+    background: var(--bg-error-hover);
+    border-left-color: var(--border-color-hover);
+}
+
+.fbgraph-results {
+    display: grid;
+    gap: 15px;
+}
+
+.fbgraph-result-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    word-wrap: break-word;
+    transition: all 0.3s ease;
+}
+
+.fbgraph-result-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-color-hover);
+    box-shadow: 0 8px 24px var(--shadow-hover);
+    transform: translateY(-3px);
+}
+
+.fbgraph-result-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fbgraph-result-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.fbgraph-result-card-content {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.fbgraph-result-card-field {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.fbgraph-result-card-field:hover {
+    border-bottom-color: var(--border-color-hover);
+    padding-left: 5px;
+}
+
+.fbgraph-result-card-field:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.fbgraph-result-card-label {
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.fbgraph-result-card-value {
+    color: var(--text-secondary);
+    word-break: break-word;
+}
+
+.fbgraph-result-card-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.fbgraph-result-card-image:hover {
+    border-color: var(--border-color-hover);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transform: scale(1.02);
+}
+
+.fbgraph-empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-hint);
+    font-size: 16px;
+}
+
+.fbgraph-footer {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.fbgraph-footer:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-color-hover);
+}
+
+.fbgraph-footer-text {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .fbgraph-container {
+        min-height: calc(100vh - 30px);
+    }
+
+    .fbgraph-header {
+        padding: 20px;
+    }
+
+    .fbgraph-title {
+        font-size: 24px;
+    }
+
+    .fbgraph-header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .fbgraph-theme-toggle {
+        align-self: center;
+    }
+
+    .fbgraph-card {
+        padding: 20px;
+    }
+
+    .fbgraph-section-title {
+        font-size: 18px;
+    }
+
+    .fbgraph-button-group {
+        flex-direction: column;
+    }
+
+    .fbgraph-btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .fbgraph-results-section {
+        padding: 20px;
+    }
+
+    .fbgraph-result-card {
+        padding: 15px;
+    }
+
+    .fbgraph-result-card-header {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .fbgraph-title {
+        font-size: 20px;
+    }
+
+    .fbgraph-header {
+        padding: 15px;
+    }
+
+    .fbgraph-card {
+        padding: 15px;
+    }
+
+    .fbgraph-section-title {
+        font-size: 16px;
+    }
+
+    .fbgraph-results-section {
+        padding: 15px;
+    }
+
+    .fbgraph-result-card {
+        padding: 12px;
+    }
+
+    .fbgraph-input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .fbgraph-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
