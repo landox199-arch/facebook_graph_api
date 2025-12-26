@@ -94,9 +94,13 @@ The access token is entered by the user in the input field and is not stored in 
 
 ## Members Listed and Roles
 
-Mian Jo Martin: API and Authentication Handler
-Russel Jan Doquenia: JavaScript Logic and Data Processing
-Maria Veronica Geron: UI and CSS Designer
-Mary Diane Iglesia: GitHub and Documentation Manager
+-Mian Jo Martin: API and Authentication Handler
+
+-Russel Jan Doquenia: JavaScript Logic and Data Processing
+
+-Maria Veronica Geron: UI and CSS Designer
+
+-Mary Diane Iglesia: GitHub and Documentation Manager
+
 
 
