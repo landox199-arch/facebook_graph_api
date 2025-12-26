@@ -88,18 +88,15 @@ The access token is entered by the user in the input field and is not stored in 
 
 ## Screenshots
 
-Screenshots of the application are included showing:
-Main interface with transparent UI design
-Profile information display with all available fields
-Dark and light mode themes
-Error handling examples
-Responsive design on mobile devices
-Theme toggle switch functionality
+<img width="1427" height="958" alt="image" src="https://github.com/user-attachments/assets/09486b71-bbe4-4633-82a0-63df5920a610" />
+<img width="740" height="939" alt="image" src="https://github.com/user-attachments/assets/8c03f823-6ca0-4e8c-a2fb-a9507ceb78cb" />
+
 
 ## Members Listed and Roles
 
-Member 1: API and Authentication Handler
-Member 2: JavaScript Logic and Data Processing
-Member 3: UI and CSS Designer
-Member 4: GitHub and Documentation Manager
+Mian Jo Martin: API and Authentication Handler
+Russel Jan Doquenia: JavaScript Logic and Data Processing
+Maria Veronica Geron: UI and CSS Designer
+Mary Diane Iglesia: GitHub and Documentation Manager
+
 
