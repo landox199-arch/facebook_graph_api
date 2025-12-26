@@ -15,7 +15,7 @@ https://graph.facebook.com/v24.0
 #### GET /me
 Retrieves the authenticated user's profile information. This endpoint fetches comprehensive user data including basic information (id, name, email), personal details (birthday, age_range, gender, relationship_status), location data (location, hometown), social information (link, about, website, verified), media (picture, cover), and professional information (work, education). The fields parameter is used to specify which data fields to retrieve from the API.
 
-### Required Parameters
+
 
 ### Authentication Method: OAuth 2.0
 
@@ -101,6 +101,7 @@ The access token is entered by the user in the input field and is not stored in 
 -Maria Veronica Geron: UI and CSS Designer
 
 -Mary Diane Iglesia: GitHub and Documentation Manager
+
 
 
 
